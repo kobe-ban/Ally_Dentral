@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <title>Smile Ally Login</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      font-family: 'Sarabun', sans-serif;
+    }
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+    }
+
+    .left-panel {
+      flex: 1;
+      background-color: #ffffff;
+      padding: 60px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .right-panel {
+      flex: 1;
+      background-color: #4d84ba;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .right-panel img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .login-box {
+      max-width: 400px;
+      width: 100%;
+    }
+
+    .login-box h2 {
+      font-size: 28px;
+      margin-bottom: 20px;
+    }
+
+    .input-group {
+      margin-bottom: 15px;
+    }
+
+    .input-group label {
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    .input-group input,
+    .input-group select {
+      width: 100%;
+      padding: 10px;
+      font-size: 16px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+    }
+
+    .checkbox-group {
+      margin-top: 10px;
+      font-size: 14px;
+    }
+
+    .login-button {
+      margin-top: 20px;
+      width: 100%;
+      padding: 12px;
+      background-color: #4dba87;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    .login-button:hover {
+      background-color: #3da66f;
+    }
+
+    @media screen and (max-width: 768px) {
+      body {
+        flex-direction: column;
+      }
+      .right-panel {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ซ้าย: Login -->
+  <div class="left-panel">
+    <div class="login-box">
+      <h2>เข้าสู่ระบบ Smile Ally</h2>
+
+      <div class="input-group">
+        <label>ชื่อผู้ใช้</label>
+        <input type="text" placeholder="กรอกชื่อผู้ใช้">
+      </div>
+
+      <div class="input-group">
+        <label>รหัสผ่าน</label>
+        <input type="password" placeholder="กรอกรหัสผ่าน">
+      </div>
+
+      <div class="input-group">
+        <label>เลือกสาขา</label>
+        <select>
+          <option selected>kaset</option>
+        </select>
+      </div>
+
+      <div class="checkbox-group">
+        <input type="checkbox" id="accept"> 
+        <label for="accept">ยอมรับเงื่อนไขและนโยบาย</label>
+      </div>
+
+      <button id="loginBtn" class="login-button">เข้าสู่ระบบ</button>
+    </div>
+  </div>
+
+  <!-- ขวา: รูปเต็มจอ -->
+  <div class="right-panel">
+    <img src="logo.png" alt="Smile Ally Logo">
+  </div>
+
+  <!-- JS สำหรับ redirect -->
+  <script>
+    document.getElementById('loginBtn').addEventListener('click', function () {
+      if (!document.getElementById('accept').checked) {
+        alert("กรุณายอมรับเงื่อนไขก่อนเข้าสู่ระบบ");
+        return;
+      }
+      window.location.href = "dashboard.html";
+    });
+  </script>
+<script>
+  document.getElementById('loginBtn').addEventListener('click', function () {
+    // ✅ เช็คว่า checkbox ถูกติ๊กก่อน
+    const accepted = document.getElementById('accept').checked;
+    if (!accepted) {
+      alert("กรุณายอมรับเงื่อนไขก่อนเข้าสู่ระบบ");
+      return;
+    }
+
+    // ✅ เปลี่ยนไปหน้า dashboard.html
+    window.location.href = "dashboard.html";
+  });
+</script>
+</body>
+</html>
